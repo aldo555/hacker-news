@@ -29,7 +29,7 @@ class App extends React.Component {
         <Router>
           <ThemeProvider value={this.state}>
             <div className={`${this.state.theme}`}>
-              <div className="dark:bg-gray-800">
+              <div className="min-h-screen dark:bg-gray-800">
                 <div className="grain fixed top-0 left-0 w-full h-full pointer-events-none"></div>
                 <Nav />
                 <main className="max-w-7xl mx-auto font-sans xl:border-l-4 xl:border-r-4 border-black dark:border-gray-100 dark:bg-gray-800">

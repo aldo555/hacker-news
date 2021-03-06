@@ -1,6 +1,6 @@
 async function getStoriesByIds(storyIds) {
   const promises = storyIds
-    .slice(0, 9)
+    .slice(0, 15)
     .map(id =>
       fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(
         response => response.json()

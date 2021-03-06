@@ -32,3 +32,37 @@ export async function getNewStories() {
   const storyIds = await response.json();
   return getStoriesByIds(storyIds)
 }
+
+export async function getUser(id) {
+  const response = await fetch(`https://hacker-news.firebaseio.com/v0/user/${id}.json`)
+
+  if (response.ok === false) {
+    throw new Error("Response Error:" + response.text);
+  }
+
+  const user = await response.json()
+  return user
+}
+
+export async function getStoriesByUser(id) {
+  const user = await getUser(id)
+
+  const storyIds = user.submitted
+  return getStoriesByIds(storyIds)
+}
+
+export async function getStoryById(id) {
+  const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+
+  if (response.ok === false) {
+    throw new Error("Response Error:" + response.text);
+  }
+
+  const story = await response.json();
+
+  if (story.kids && story.kids.length > 0) {
+    story.comments = await getStoriesByIds(story.kids)
+  }
+
+  return story
+}

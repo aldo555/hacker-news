@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as Sunglasses } from  '../assets/sunglasses.svg';
+import { ReactComponent as Sunglasses } from  '../assets/sunglasses.svg'
 import { NavLink } from 'react-router-dom'
 
 

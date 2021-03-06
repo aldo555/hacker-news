@@ -5,7 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Nav from './components/Navbar'
-import Stories from './components/Stories'
+import Loading from './components/Loading'
+import NoMatch from './components/NoMatch'
+
+const Stories = React.lazy(() => import('./components/Stories'))
+const User = React.lazy(() => import('./components/User'))
+const Post = React.lazy(() => import('./components/Post'))
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,9 +18,14 @@ ReactDOM.render(
       <div className="grain fixed top-0 left-0 w-full h-full pointer-events-none"></div>
       <Nav />
       <main className="max-w-7xl mx-auto font-sans xl:border-l-4 xl:border-r-4 border-black">
-        <React.Suspense>
-          <Route exact path="/" render={(props) => <Stories type="top" />} />
-          <Route path="/new" render={(props) => <Stories type="new" />} />
+        <React.Suspense fallback={<Loading text="Loading" />}>
+          <Switch>
+            <Route exact path="/" render={() => <Stories key="top" type="top" />} />
+            <Route path="/new" render={() => <Stories key="new" type="new" />} />
+            <Route path="/user" component={User} />
+            <Route path="/post" component={Post} />
+            <Route component={NoMatch} />
+          </Switch>
         </React.Suspense>
       </main>
     </Router>

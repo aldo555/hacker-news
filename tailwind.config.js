@@ -15,7 +15,7 @@ module.exports = {
       white: colors.white
     },
     fontFamily: {
-      sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      sans: ['proxima-nova', ...defaultTheme.fontFamily.sans],
       mono: ['ibm-plex-mono', ...defaultTheme.fontFamily.mono],
     },
   },

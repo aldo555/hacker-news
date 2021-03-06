@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import Nav from './components/Navbar'
+import Stories from './components/Stories'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <div class="grain fixed top-0 left-0 w-full h-full pointer-events-none"></div>
+      <Nav />
+      <main className="max-w-7xl mx-auto font-sans border-l-4 border-r-4 border-black">
+        <Stories />
+      </main>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

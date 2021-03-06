@@ -11,6 +11,8 @@ module.exports = {
       current: 'currentColor',
       pink: colors.pink,
       gray: colors.warmGray,
+      black: colors.black,
+      white: colors.white
     },
     fontFamily: {
       sans: ['Inter var', ...defaultTheme.fontFamily.sans],

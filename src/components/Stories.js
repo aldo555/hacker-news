@@ -8,7 +8,13 @@ export default class Stories extends React.Component {
   }
 
   componentDidMount() {
-    getNewStories().then((stories) => this.setState({stories: stories}))
+    const { type } = this.props
+
+    if (type === 'top') {
+      getTopStories().then((stories) => this.setState({stories: stories}))
+    } else {
+      getNewStories().then((stories) => this.setState({stories: stories}))
+    }
   }
 
   render() {

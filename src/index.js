@@ -10,10 +10,13 @@ import Stories from './components/Stories'
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <div class="grain fixed top-0 left-0 w-full h-full pointer-events-none"></div>
+      <div className="grain fixed top-0 left-0 w-full h-full pointer-events-none"></div>
       <Nav />
-      <main className="max-w-7xl mx-auto font-sans border-l-4 border-r-4 border-black">
-        <Stories />
+      <main className="max-w-7xl mx-auto font-sans xl:border-l-4 xl:border-r-4 border-black">
+        <React.Suspense>
+          <Route exact path="/" render={(props) => <Stories type="top" />} />
+          <Route path="/new" render={(props) => <Stories type="new" />} />
+        </React.Suspense>
       </main>
     </Router>
   </React.StrictMode>,
